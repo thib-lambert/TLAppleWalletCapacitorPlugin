@@ -1,0 +1,306 @@
+{
+  "api": {
+    "name": "TLAppleWalletPlugin",
+    "slug": "tlapplewalletplugin",
+    "docs": "Interface representing the Apple Wallet plugin.",
+    "tags": [
+      {
+        "text": "TLAppleWalletPlugin",
+        "name": "interface"
+      }
+    ],
+    "methods": [
+      {
+        "name": "initialize",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "returns",
+            "text": "A promise that resolves once initialization is complete."
+          }
+        ],
+        "docs": "Initializes the plugin.",
+        "complexTypes": [],
+        "slug": "initialize"
+      },
+      {
+        "name": "getActionsAvailableForCardSuffix",
+        "signature": "(options: { cardSuffix: string; }) => Promise<{ actions: number[]; }>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "- The options to get available actions.",
+            "type": "{ cardSuffix: string; }"
+          }
+        ],
+        "returns": "Promise<{ actions: number[]; }>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "options - The options to get available actions."
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves with the available actions."
+          }
+        ],
+        "docs": "Gets the available actions for a given card suffix.",
+        "complexTypes": [],
+        "slug": "getactionsavailableforcardsuffix"
+      },
+      {
+        "name": "openCard",
+        "signature": "(options: { cardSuffix: string; }) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "- The options to open the card.",
+            "type": "{ cardSuffix: string; }"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "options - The options to open the card."
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves once the card is opened."
+          }
+        ],
+        "docs": "Opens the card with the specified suffix.",
+        "complexTypes": [],
+        "slug": "opencard"
+      },
+      {
+        "name": "startAddPaymentPass",
+        "signature": "(options: ProvisioningDataRequest) => Promise<ProvisioningDataResponse>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "- The provisioning data required to add a card.",
+            "type": "ProvisioningDataRequest"
+          }
+        ],
+        "returns": "Promise<ProvisioningDataResponse>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "options - The provisioning data required to add a card."
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves with the provisioning data response."
+          }
+        ],
+        "docs": "Starts the process of adding a payment pass.",
+        "complexTypes": [
+          "ProvisioningDataResponse",
+          "ProvisioningDataRequest"
+        ],
+        "slug": "startaddpaymentpass"
+      },
+      {
+        "name": "completeAddPaymentPass",
+        "signature": "(options: ProvisioningFinalDataRequest) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "- The final provisioning data required to complete the process.",
+            "type": "ProvisioningFinalDataRequest"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "options - The final provisioning data required to complete the process."
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves once the provisioning is complete."
+          }
+        ],
+        "docs": "Completes the process of adding a payment pass.",
+        "complexTypes": [
+          "ProvisioningFinalDataRequest"
+        ],
+        "slug": "completeaddpaymentpass"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "ProvisioningDataResponse",
+      "slug": "provisioningdataresponse",
+      "docs": "Interface representing the provisioning data response.",
+      "tags": [
+        {
+          "text": "ProvisioningDataResponse",
+          "name": "interface"
+        }
+      ],
+      "methods": [],
+      "properties": [
+        {
+          "name": "nonce",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Nonce used to secure communications.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "nonceSignature",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Signature of the nonce for verification.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "certificates",
+          "tags": [
+            {
+              "text": "{string[]}",
+              "name": "type"
+            }
+          ],
+          "docs": "List of certificates used for authentication.",
+          "complexTypes": [],
+          "type": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "ProvisioningDataRequest",
+      "slug": "provisioningdatarequest",
+      "docs": "Interface representing the provisioning data request.",
+      "tags": [
+        {
+          "text": "ProvisioningDataRequest",
+          "name": "interface"
+        }
+      ],
+      "methods": [],
+      "properties": [
+        {
+          "name": "cardholderName",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Name of the cardholder.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "localizedDescription",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Localized description of the card.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "paymentNetwork",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Payment network (Visa, MasterCard, etc.).",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "primaryAccountSuffix",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            },
+            {
+              "name": "optional"
+            }
+          ],
+          "docs": "Suffix of the primary account (optional).",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "ProvisioningFinalDataRequest",
+      "slug": "provisioningfinaldatarequest",
+      "docs": "Interface representing the final provisioning data request.",
+      "tags": [
+        {
+          "text": "ProvisioningFinalDataRequest",
+          "name": "interface"
+        }
+      ],
+      "methods": [],
+      "properties": [
+        {
+          "name": "encryptedPassData",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Encrypted card data.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "ephemeralPublicKey",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Ephemeral public key for encryption.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "activationData",
+          "tags": [
+            {
+              "text": "{string}",
+              "name": "type"
+            }
+          ],
+          "docs": "Activation data for the card.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
